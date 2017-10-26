@@ -2,17 +2,50 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
 <span style="color:white">Pokemón home page.</span>
 
+<button class="btn" type="button" name="button" id="add_new">+ Add New Pokemon</button>
 
+<div id="add-new-pokemon" style="display: block">
+  <form action="index.html" method="post" style="color:white">
 
-<button type="button" name="button" id="add_new">+ Add New Pokemon</button>
+    <label for="id">ID: </label>
+    <input type="text" name="id" value="">
+
+    <label for="name">Name: </label>
+    <input type="text" name="name" value="">
+
+    <label for="trainer_id">Trainer ID: </label>
+    <input type="text" name="trainer_id" value="">
+
+    <label for="cp">CP: </label>
+    <input type="text" name="cp" value="">
+
+    <label for="in_gym">Gym: </label>
+    <input type="text" name="in_gym" value="">
+
+    <input type="submit" name="" value="Add New Pokemon">
+
+  </form>
+</div>
 
 <script type="text/javascript">
-   var btn = document.getElementById("add_new");
-   var passedInData = '<%= passedInData %>' ;
-   btn.addEventListener("click", function(){
-     alert("the button works, and we see "+passedInData);
-   })
+  var newPokemonForm = document.getElementById('add-new-pokemon');
+  $(newPokemonForm).hide();
+
+  var btn = document.getElementById("add_new");
+  var passedInData = '<%= passedInData %>' ;
+  btn.addEventListener("click", function(){
+  //  alert("the button works, and we see "+passedInData);
+    $(newPokemonForm).slideDown('slow');
+  })
+  console.log(newPokemonForm);
+
+
 
 </script>
