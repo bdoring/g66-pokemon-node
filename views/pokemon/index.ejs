@@ -12,26 +12,37 @@
 <button class="btn" type="button" name="button" id="add_new">+ Add New Pokemon</button>
 
 <div id="add-new-pokemon" style="display: block">
-  <form action="index.html" method="post" style="color:white">
-
-    <label for="id">ID: </label>
-    <input type="text" name="id" value="">
+  <form action="/pokemon" method="post" style="color:white">
 
     <label for="name">Name: </label>
     <input type="text" name="name" value="">
 
-    <label for="trainer_id">Trainer ID: </label>
-    <input type="text" name="trainer_id" value="">
+    <label for="trainer_id">Trainer: </label>
+    <select class="" name="trainer_id">
+      <% for (let i = 0; i < trainers.length; i++) { %>
+        <option value="<%= trainers[i].id %>"><%=trainers[i].name %></option>
+      <% } %>
+    </select>
 
     <label for="cp">CP: </label>
     <input type="text" name="cp" value="">
 
-    <label for="in_gym">Gym: </label>
-    <input type="text" name="in_gym" value="">
-
     <input type="submit" name="" value="Add New Pokemon">
 
   </form>
+</div>
+
+<div class="my-pokemon-list" style="color: white; height: 100%; overflow-y: scroll;">
+  <% for (let i = 0; i < pokemon.length; i++) { %>
+    <div style="border: 1px solid grey">
+      <p><b>POKEMON NAME: </b> <%= pokemon[i].pokemonName %> </p>
+      <p><b>POKEMON CP: </b> <%= pokemon[i].cp %> </p>
+        <p><b>IN GYM? </b> <%= pokemon[i].in_gym %> </p>
+      <p><b>TRAINER: </b> <%= pokemon[i].trainerName %> </p>
+      <a href="#">EDIT</a>
+      <a href="#">DELETE</a>
+    </div>
+  <% } %>
 </div>
 
 <script type="text/javascript">
@@ -39,13 +50,9 @@
   $(newPokemonForm).hide();
 
   var btn = document.getElementById("add_new");
-  var passedInData = '<%= passedInData %>' ;
+  // var passedInData = '<%= //passedInData %>' ;
   btn.addEventListener("click", function(){
-  //  alert("the button works, and we see "+passedInData);
     $(newPokemonForm).slideDown('slow');
   })
-  console.log(newPokemonForm);
-
-
 
 </script>
