@@ -6,9 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 8000;
 
-var routes = require('./routes/index');
-var trainers = require('./routes/trainers');
-var pokemon = require('./routes/pokemon');
+var routes = require('./controllers/index');
+var trainers = require('./controllers/trainers');
+var pokemon = require('./controllers/pokemon');
 
 
 var app = express();
