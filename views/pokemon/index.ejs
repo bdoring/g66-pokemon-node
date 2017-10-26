@@ -2,50 +2,62 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-
 <span style="color:white">Pokemón home page.</span>
 
 <button class="btn" type="button" name="button" id="add_new">+ Add New Pokemon</button>
 
-<div id="add-new-pokemon" style="display: block">
-  <form action="/pokemon" method="post" style="color:white">
+<div id="add-new-pokemon">
+  <form class="center" action="/pokemon" method="post" style="color:white">
+    <div class="row">
+      <div class="col m4">
+        <label for="name">Name: </label>
+        <input type="text" name="name" value="">
+      </div>
 
-    <label for="name">Name: </label>
-    <input type="text" name="name" value="">
+      <div class="col m4">
+        <label for="trainer_id">Trainer: </label>
+        <select class="" name="trainer_id">
+          <% for (let i = 0; i < trainers.length; i++) { %>
+            <option value="<%= trainers[i].id %>"><%=trainers[i].name %></option>
+          <% } %>
+        </select>
+      </div>
 
-    <label for="trainer_id">Trainer: </label>
-    <select class="" name="trainer_id">
-      <% for (let i = 0; i < trainers.length; i++) { %>
-        <option value="<%= trainers[i].id %>"><%=trainers[i].name %></option>
-      <% } %>
-    </select>
+      <div class="col m4">
+        <label for=""></label>
+        <label for="cp">CP: </label>
+        <input type="text" name="cp" value="">
+      </div>
+    </div>
 
-    <label for="cp">CP: </label>
-    <input type="text" name="cp" value="">
-
-    <input type="submit" name="" value="Add New Pokemon">
+    <input class="btn" type="submit" name="" value="Submit">
 
   </form>
 </div>
 
-<div class="my-pokemon-list" style="color: white; height: 100%; overflow-y: scroll;">
+
+<div class="my-pokemon-list white-text">
   <% for (let i = 0; i < pokemon.length; i++) { %>
-    <div style="border: 1px solid grey">
+    <div class="my-pokemon" style="border: 1px solid grey">
       <p><b>POKEMON NAME: </b> <%= pokemon[i].pokemonName %> </p>
       <p><b>POKEMON CP: </b> <%= pokemon[i].cp %> </p>
         <p><b>IN GYM? </b> <%= pokemon[i].in_gym %> </p>
       <p><b>TRAINER: </b> <%= pokemon[i].trainerName %> </p>
-      <a href="#">EDIT</a>
-      <a href="#">DELETE</a>
+      <div class="center-align">
+        <a class="btn small-btn orange lighten-1" href="#">EDIT</a>
+        <a class="btn small-btn orange lighten-1 red-text" href="#">DELETE</a>
+      </div>
+
     </div>
   <% } %>
 </div>
 
+
+
 <script type="text/javascript">
+
+  $('select').material_select();
+
   var newPokemonForm = document.getElementById('add-new-pokemon');
   $(newPokemonForm).hide();
 
