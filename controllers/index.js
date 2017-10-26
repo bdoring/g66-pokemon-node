@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/pokemon', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('pokemon/index', { passedInData: 'Express' });
 })
 
 module.exports = router;
