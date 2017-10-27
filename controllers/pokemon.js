@@ -85,6 +85,7 @@ router.post('/:id/edit', function(req, res) {
     trainer_id: req.body.trainer_id,
     in_gym: req.body.in_gym
   }
+
   knex('pokemon')
     .update(updates, '*')
     .where('pokemon.id', req.params.id)
