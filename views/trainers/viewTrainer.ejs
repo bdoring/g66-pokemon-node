@@ -1,0 +1,13 @@
+<%- contentFor('body') %>
+
+<a class="btn orange lighten-1" href="/trainers"> GO BACK</a>
+
+<h1 class="orange-text lighten-1 center"><%= trainer.name %></h1>
+
+<div class="my-pokemon-list">
+  <% for (let i = 0; i < pokemon.length; i++) { %>
+    <div class="pokemon">
+      <h3 class="orange-text lighten-1"><%= pokemon[i].name %></h3>
+    </div>
+  <% } %>
+</div>

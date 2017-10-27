@@ -11,8 +11,19 @@ router.get('/', function(req, res, next) {
     })
     .catch((err) => {
       console.log(err);
-    })
+    });
+});
 
+router.get('/:id', function(req, res) {
+  knex('trainers')
+    .where('trainers.id', req.params.id)
+    .then((trainerResult) => {
+      knex('pokemon')
+        .where('pokemon.trainer_id', trainerResult[0].id)
+        .then((pokemonList => {
+          res.render('trainers/viewTrainer', {trainer: trainerResult[0], pokemon: pokemonList});
+        }))
+    })
 });
 
 module.exports = router;

@@ -2,24 +2,10 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<span style="color:white">Trainers home page.</span>
-
-<button type="button" name="button" id="add_new">+ Add New Trainer</button>
-
 <div class="trainers-list">
   <% for (let i = 0; i < trainers.length; i++) { %>
     <div class="trainers">
-      <h4><a class="orange-text lighten-1" href="#"><%= trainers[i].name %></a></h4>
+      <h4><a class="orange-text lighten-1" href="/trainers/<%= trainers[i].id %>"><%= trainers[i].name %></a></h4>
     </div>
   <% } %>
 </div>
-
-
-<script type="text/javascript">
-   var btn = document.getElementById("add_new");
-  //  var passedInData = '<%= //passedInData %>' ;
-   btn.addEventListener("click", function(){
-     alert("the button works, and we see "+passedInData);
-   })
-
-</script>

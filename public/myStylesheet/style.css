@@ -79,7 +79,7 @@ label {
   margin: 0 10px;
 }
 
-.trainers {
+.trainers, .pokemon {
   flex: 0 0 auto;
   text-align: center;
   margin: 5px;
