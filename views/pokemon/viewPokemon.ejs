@@ -1,0 +1,16 @@
+<%- contentFor('body') %>
+
+<a class="btn orange lighten-1" href="/pokemon"> GO BACK</a>
+
+<h1 class="center orange-text lighten-1"><%= pokemon.pokemonName %></h1>
+
+<div class="orange-text lighten-1">
+  <h4>TRAINER: <%= pokemon.trainerName %></h4>
+  <h4>CP: <%= pokemon.cp %></h4>
+  <h4>IN GYM?
+  <% if (pokemon.in_gym) { %>
+    Yes </h4>
+  <% } else { %>
+    No </h4>
+  <% } %>
+</div>

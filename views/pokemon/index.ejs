@@ -39,13 +39,20 @@
 <div class="my-pokemon-list white-text">
   <% for (let i = 0; i < pokemon.length; i++) { %>
     <div class="my-pokemon" style="border: 1px solid grey">
-      <p><b>POKEMON NAME: </b> <%= pokemon[i].pokemonName %> </p>
-      <p><b>POKEMON CP: </b> <%= pokemon[i].cp %> </p>
-        <p><b>IN GYM? </b> <%= pokemon[i].in_gym %> </p>
+      <p class="center pokemon-name"><b><a class="orange-text lighten-1" href="/pokemon/<%= pokemon[i].id %>"><%= pokemon[i].pokemonName %></a></b> </p>
+      <p><b>CP: </b> <%= pokemon[i].cp %> </p>
+        <p class="uppercase"><b>IN GYM? </b> <%= pokemon[i].in_gym %>
+        <% if ((pokemon[i].id == player1) || (pokemon[i].id == player2)) { %>
+          <a class="remove-from-gym-btn btn red" href="/pokemon/<%= pokemon[i].id %>/removeGym">REMOVE FROM GYM</a></p>
+        <% } else if (!(player1 && player2)){ %>
+          <a class="add-to-gym-btn btn" href="/pokemon/<%= pokemon[i].id %>/addToGym">ADD TO GYM</a></p>
+        <% } %>
+
+
       <p><b>TRAINER: </b> <%= pokemon[i].trainerName %> </p>
       <div class="center-align">
-        <a class="btn small-btn orange lighten-1" href="#">EDIT</a>
-        <a class="btn small-btn orange lighten-1 red-text" href="#">DELETE</a>
+        <a class="btn small-btn orange lighten-1" href="/pokemon/<%= pokemon[i].id %>/edit">EDIT</a>
+        <a class="btn small-btn orange lighten-1 red-text" href="/pokemon/<%= pokemon[i].id %>/delete">DELETE</a>
       </div>
 
     </div>
@@ -57,6 +64,25 @@
 <script type="text/javascript">
 
   $('select').material_select();
+
+  var addToGym = document.getElementsByClassName('add-to-gym-btn');
+
+  console.log(addToGym);
+
+
+  if (('<%= player1 %>') && ('<%= player2 %>')) {
+
+    $(addToGym).each(function() {
+      console.log('here if');
+      $(this).addClass('disabled');
+    })
+
+  } else {
+    console.log('here else');
+    $(addToGym).each(function() {
+      $(this).removeClass('disabled');
+    })
+  }
 
   var newPokemonForm = document.getElementById('add-new-pokemon');
   $(newPokemonForm).hide();
