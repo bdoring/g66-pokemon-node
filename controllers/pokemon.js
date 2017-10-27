@@ -112,8 +112,27 @@ router.get('/:id/delete', function(req, res) {
     })
 });
 
-//ADDS pokemon to gym
-router.get('/:id/addToGym', function(req, res) {
+// ADDS pokemon to gym
+// router.get('/:id/addToGym', function(req, res) {
+//   console.log('req query? saved', req.query);
+//   if (!req.cookies.p1) {
+//     res.cookie('p1', req.params.id);
+//
+//   } else {
+//     res.cookie('p2', req.params.id);
+//   }
+//   knex('pokemon')
+//     .update({ in_gym: true })
+//     .where('pokemon.id', req.params.id)
+//     .then(() => {
+//       res.redirect('/pokemon');
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     })
+// });
+
+router.post('/:id/addToGym', function(req, res) {
   if (!req.cookies.p1) {
     res.cookie('p1', req.params.id);
 
@@ -131,8 +150,11 @@ router.get('/:id/addToGym', function(req, res) {
     })
 });
 
+
+
+
 //REMOVES pokemon from gym
-router.get('/:id/removeGym', function(req, res) {
+router.post('/:id/removeGym', function(req, res) {
   if (req.params.id == req.cookies.p1) {
     res.clearCookie('p1');
   } else {

@@ -36,7 +36,7 @@
 </div>
 
 
-<div class="my-pokemon-list white-text">
+<!-- <div class="my-pokemon-list white-text">
   <% for (let i = 0; i < pokemon.length; i++) { %>
     <div class="my-pokemon" style="border: 1px solid grey">
       <p class="center pokemon-name"><b><a class="orange-text lighten-1" href="/pokemon/<%= pokemon[i].id %>"><%= pokemon[i].pokemonName %></a></b> </p>
@@ -45,7 +45,7 @@
         <% if ((pokemon[i].id == player1) || (pokemon[i].id == player2)) { %>
           <a class="remove-from-gym-btn btn red" href="/pokemon/<%= pokemon[i].id %>/removeGym">REMOVE FROM GYM</a></p>
         <% } else if (!(player1 && player2)){ %>
-          <a class="add-to-gym-btn btn" href="/pokemon/<%= pokemon[i].id %>/addToGym">ADD TO GYM</a></p>
+          <a class="add-to-gym-btn btn" href="/pokemon/<%= pokemon[i].id %>/addToGym" name="hello" >ADD TO GYM</a></p>
         <% } %>
 
 
@@ -57,9 +57,33 @@
 
     </div>
   <% } %>
-</div>
+</div> -->
+
+<form class="" action="" method="post">
+    <div class="my-pokemon-list white-text">
+
+    <% for (let i = 0; i < pokemon.length; i++) { %>
+      <div class="my-pokemon" style="border: 1px solid grey">
+        <p class="center pokemon-name"><b><a class="orange-text lighten-1" href="/pokemon/<%= pokemon[i].id %>"><%= pokemon[i].pokemonName %></a></b> </p>
+        <p><b>CP: </b> <%= pokemon[i].cp %> </p>
+          <p class="uppercase"><b>IN GYM? </b> <%= pokemon[i].in_gym %>
+          <% if ((pokemon[i].id == player1) || (pokemon[i].id == player2)) { %>
+            <input formaction="/pokemon/<%= pokemon[i].id %>/removeGym" type="submit" class="remove-from-gym-btn btn red" value="REMOVE FROM GYM"></p>
+          <% } else if (!(player1 && player2)){ %>
+            <input formaction="/pokemon/<%= pokemon[i].id %>/addToGym" type="submit" class="add-to-gym-btn btn" value="ADD TO GYM"></p>
+          <% } %>
 
 
+        <p><b>TRAINER: </b> <%= pokemon[i].trainerName %> </p>
+        <div class="center-align">
+          <a class="btn small-btn orange lighten-1" href="/pokemon/<%= pokemon[i].id %>/edit">EDIT</a>
+          <a class="btn small-btn orange lighten-1 red-text" href="/pokemon/<%= pokemon[i].id %>/delete">DELETE</a>
+        </div>
+
+      </div>
+    <% } %>
+  </div>
+</form>
 
 <script type="text/javascript">
 

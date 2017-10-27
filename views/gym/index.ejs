@@ -1,0 +1,46 @@
+<%- contentFor('body') %>
+<div class="center orange-text lighten-1">
+
+  <% if (battlingPokemon[0]) { %>
+    <h1><%= battlingPokemon[0].name %></h1>
+    <h1>VS</h1>
+    <% if (battlingPokemon[1]) { %>
+      <h1><%= battlingPokemon[1].name %></h1>
+    <% } else { %>
+      <label for="player2">Choose Player 2: </label>
+      <select class="" name="player2">
+        <% for (let i = 0; i < pokemon.length; i++) { %>
+          <option value=""><%= pokemon[i].name %></option>
+        <% } %>
+      </select>
+      <a class="btn orange lighten-1" href="#">Add to Gym</a>
+    <% } %>
+  <% } else { %>
+    <form class="" action="index.html" method="post">
+      <label for="player1">Choose Player 1: </label>
+      <select class="" name="player1">
+        <% for (let i = 0; i < pokemon.length; i++) { %>
+          <option value=""><%= pokemon[i].name %></option>
+        <% } %>
+      </select>
+
+      <label for=""></label>
+
+      <label for="player2">Choose Player 2: </label>
+      <select class="" name="player2">
+        <% for (let i = 0; i < pokemon.length; i++) { %>
+          <option value=""><%= pokemon[i].name %></option>
+        <% } %>
+      </select>
+      <a class="btn orange lighten-1" href="#">Add to Gym</a>
+    </form>
+
+  <% } %>
+
+
+
+</div>
+
+<script type="text/javascript">
+    $('select').material_select();
+</script>

@@ -9,6 +9,7 @@ var port = process.env.PORT || 8000;
 var routes = require('./controllers/index');
 var trainers = require('./controllers/trainers');
 var pokemon = require('./controllers/pokemon');
+var gym = require('./controllers/gym');
 
 
 var app = express();
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/trainers', trainers);
 app.use('/pokemon', pokemon);
+app.use('/gym', gym);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
