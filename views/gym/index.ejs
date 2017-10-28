@@ -1,26 +1,32 @@
 <%- contentFor('body') %>
+
+<a class="btn orange lighten-1" href="/gym/removeGym"> RESET GYM</a>
+
+<h3 class="red-text center"><%= message %></h3>
+
 <div class="center orange-text lighten-1">
+  <form class="" action="" method="post">
 
   <% if (battlingPokemon[0]) { %>
-    <h1><%= battlingPokemon[0].name %></h1>
+    <h1 id="player1" value="<%= battlingPokemon[0].cp %>"><%= battlingPokemon[0].name %></h1>
     <h1>VS</h1>
     <% if (battlingPokemon[1]) { %>
-      <h1><%= battlingPokemon[1].name %></h1>
+      <h1 id="player2" value="<%= battlingPokemon[1].cp %>"><%= battlingPokemon[1].name %></h1>
+      <a id="battle" class="btn" href="#">BATTLE!</a>
     <% } else { %>
       <label for="player2">Choose Player 2: </label>
       <select class="" name="player2">
         <% for (let i = 0; i < pokemon.length; i++) { %>
-          <option value=""><%= pokemon[i].name %></option>
+          <option value="<%= pokemon[i].id %>"><%= pokemon[i].name %></option>
         <% } %>
       </select>
-      <a class="btn orange lighten-1" href="#">Add to Gym</a>
+      <input formaction="/gym/addToGym" type="submit" class="btn orange lighten-1" value="ADD TO GYM">
     <% } %>
   <% } else { %>
-    <form class="" action="index.html" method="post">
       <label for="player1">Choose Player 1: </label>
       <select class="" name="player1">
         <% for (let i = 0; i < pokemon.length; i++) { %>
-          <option value=""><%= pokemon[i].name %></option>
+          <option value="<%= pokemon[i].id %>"><%= pokemon[i].name %></option>
         <% } %>
       </select>
 
@@ -29,18 +35,30 @@
       <label for="player2">Choose Player 2: </label>
       <select class="" name="player2">
         <% for (let i = 0; i < pokemon.length; i++) { %>
-          <option value=""><%= pokemon[i].name %></option>
+          <option value="<%= pokemon[i].id %>"><%= pokemon[i].name %></option>
         <% } %>
       </select>
-      <a class="btn orange lighten-1" href="#">Add to Gym</a>
+      <input formaction="/gym/addToGym" type="submit" class="btn orange lighten-1" value="ADD TO GYM">
     </form>
 
   <% } %>
-
-
 
 </div>
 
 <script type="text/javascript">
     $('select').material_select();
+      let player1CP = Number($('#player1').attr('value'));
+      let player2CP = Number($('#player2').attr('value'));
+
+      let battleBTN = document.getElementById('battle');
+      $(battleBTN).click(function() {
+        if (player1CP > player2CP) {
+          $('#player1').append(' *WINNER*');
+        } else if (player1CP < player2CP) {
+          $('#player2').append(' *WINNER*');
+        } else {
+          alert("IT'S A TIE!");
+        }
+        $(battleBTN).addClass('disabled');
+      })
 </script>

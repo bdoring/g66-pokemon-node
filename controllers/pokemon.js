@@ -133,14 +133,18 @@ router.get('/:id/delete', function(req, res) {
 // });
 
 router.post('/:id/addToGym', function(req, res) {
+  console.log('req.body from button', req.body);
   if (!req.cookies.p1) {
     res.cookie('p1', req.params.id);
 
   } else {
     res.cookie('p2', req.params.id);
   }
+
+
   knex('pokemon')
     .update({ in_gym: true })
+    .update({ updated_at: knex.fn.now()}, '*')
     .where('pokemon.id', req.params.id)
     .then(() => {
       res.redirect('/pokemon');
