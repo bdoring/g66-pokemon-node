@@ -4,12 +4,11 @@ var knex = require('../db/knex.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
+  console.log('get route - message?', req.cookies.message);
   knex('pokemon')
     .orderBy('updated_at', 'ASC')
     .then((pokemonList) => {
       let inGymPokemon = pokemonList.filter(pokemon => pokemon.in_gym);
-      console.log(inGymPokemon);
       let messageToThePage = "";
       if (req.cookies.message) {
         messageToThePage = req.cookies.message;
@@ -22,8 +21,6 @@ router.get('/', function(req, res, next) {
 
 //ADD pokemon to the gym
 router.post('/addToGym', function(req, res) {
-  console.log("req.body", req.body);
-
   let pokemonToBeAdded = {
     player1: 0,
     player2: 0
@@ -47,10 +44,6 @@ router.post('/addToGym', function(req, res) {
   if (req.cookies.p2) {
     p2 = req.cookies.p2;
   }
-
-  console.log('p1', p1);
-  console.log('p2', p2);
-  console.log('pokemonToBeAdded', pokemonToBeAdded);
 
   if ((pokemonToBeAdded.player1 !== pokemonToBeAdded.player2) && ((pokemonToBeAdded.player2 != p1) && (pokemonToBeAdded.player2 != p2))){
 
@@ -98,5 +91,35 @@ router.get('/removeGym', function(req, res) {
     })
 })
 
+router.get('/battle', function(req, res) {
+  knex('pokemon')
+    .where('id', req.cookies.p1)
+    .orWhere('id', req.cookies.p2)
+    .orderBy('updated_at', 'ASC')
+    .then((battlingPokemon) => {
+      let winnerID = 0;
+      let oldCP = 0;
+      if (battlingPokemon[0].cp > battlingPokemon[1].cp) {
+        winnerID = battlingPokemon[0].id;
+        oldCP = battlingPokemon[0].cp;
+        res.cookie('message', `${battlingPokemon[0].name} is the WINNER! It gained 20CP.`);
+      } else if (battlingPokemon[0].cp < battlingPokemon[1].cp){
+        winnerID = battlingPokemon[1].id;
+        oldCP = battlingPokemon[1].cp;
+        res.cookie('message', `${battlingPokemon[1].name} is the WINNER! It gained 20CP.`);
+      } else {
+        req.cookies.message = "It's a tie!";
+      }
+      knex('pokemon')
+        .update({cp: (oldCP + 20)})
+        .where('id', winnerID)
+        .then(() => {
+          res.redirect('/gym');
+        })
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 module.exports = router;

@@ -12,7 +12,7 @@
     <h1>VS</h1>
     <% if (battlingPokemon[1]) { %>
       <h1 id="player2" value="<%= battlingPokemon[1].cp %>"><%= battlingPokemon[1].name %></h1>
-      <a id="battle" class="btn" href="#">BATTLE!</a>
+      <a id="battle" class="btn" href="/gym/battle">BATTLE!</a>
     <% } else { %>
       <label for="player2">Choose Player 2: </label>
       <select class="" name="player2">
@@ -47,18 +47,4 @@
 
 <script type="text/javascript">
     $('select').material_select();
-      let player1CP = Number($('#player1').attr('value'));
-      let player2CP = Number($('#player2').attr('value'));
-
-      let battleBTN = document.getElementById('battle');
-      $(battleBTN).click(function() {
-        if (player1CP > player2CP) {
-          $('#player1').append(' *WINNER*');
-        } else if (player1CP < player2CP) {
-          $('#player2').append(' *WINNER*');
-        } else {
-          alert("IT'S A TIE!");
-        }
-        $(battleBTN).addClass('disabled');
-      })
 </script>
