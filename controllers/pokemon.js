@@ -148,8 +148,10 @@ router.post('/:id/addToGym', function(req, res) {
 
 
   knex('pokemon')
-    .update({ in_gym: true })
-    .update({ updated_at: knex.fn.now()}, '*')
+    .update({
+      in_gym: true,
+      updated_at: knex.fn.now()
+    })
     .where('pokemon.id', req.params.id)
     .then(() => {
       res.redirect('/pokemon');
