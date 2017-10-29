@@ -1,10 +1,31 @@
 <%- contentFor('body') %>
 
-<a class="btn orange lighten-1" href="/pokemon"> GO BACK</a>
+<a class="btn" href="/pokemon"> GO BACK</a>
 
-<h1 class="center orange-text lighten-1"><%= pokemon.pokemonName %></h1>
+<div class="pokemon-intro">
+  <p class="center"><img src="<%= pokemon.battle_image_url %>" alt="">
+    <h4 class="center orange-text lighten-1"><b><%= pokemon.pokemonName %></b></h4>
+  </p>
 
-<div class="orange-text lighten-1">
+  <div class="pokemon-info">
+    <h5><b>Trainer:</b> <%= pokemon.trainerName %></h5>
+    <h5><b>CP:</b> <%= pokemon.cp %></h5>
+    <h5><b>In a Gym?</b>
+    <% if (pokemon.in_gym) { %>
+      Yes </h5>
+    <% } else { %>
+      No </h5>
+    <% } %>
+  </div>
+
+
+
+
+</div>
+
+
+
+<!-- <div class="orange-text lighten-1">
   <h4>TRAINER: <%= pokemon.trainerName %></h4>
   <h4>CP: <%= pokemon.cp %></h4>
   <h4>IN GYM?
@@ -13,4 +34,4 @@
   <% } else { %>
     No </h4>
   <% } %>
-</div>
+</div> -->

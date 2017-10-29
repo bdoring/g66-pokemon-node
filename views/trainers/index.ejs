@@ -2,10 +2,13 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<div class="trainers-list">
+<div class="trainers-list valign-wrapper">
   <% for (let i = 0; i < trainers.length; i++) { %>
-    <div class="trainers">
-      <h4><a class="orange-text lighten-1" href="/trainers/<%= trainers[i].id %>"><%= trainers[i].name %></a></h4>
+    <div class="trainers z-depth-1 hoverable">
+      <h4><a class="orange-text lighten-1" href="/trainers/<%= trainers[i].id %>">
+        <p><img class="trainer_image_url" src="<%= trainers[i].image_url %>" alt=""></p>
+        <%= trainers[i].name %>
+      </a></h4>
     </div>
   <% } %>
 </div>

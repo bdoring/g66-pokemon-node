@@ -5,29 +5,34 @@
 <div class="edit-form">
   <form class="orange-text lighten-1" action="/pokemon/<%= pokemon.id %>/edit" method="post">
     <div class="row">
-      <div class="col m6">
-        <label class="orange-text lighten-1" for="name">Name: </label>
-        <input class="orange-text lighten-1 center" disabled type="text" name="name" value="<%= pokemon.pokemonName %>">
-      </div>
-      <div class="col m6">
-        <label class="orange-text lighten-1" for="current_trainer">Current Trainer</label>
-        <input disabled class="orange-text lighten-1 center" type="text" name="current_trainer" value="<%= pokemon.trainerName %>">
-      </div>
+
+        <div class="col m6">
+          <label class="grey-text darken-4" for="name">Name: </label>
+          <input class="grey-text darken-4 center" disabled type="text" name="name" value="<%= pokemon.pokemonName %>">
+        </div>
+
+        <div class="col m6">
+          <label class="grey-text darken-4" for="current_trainer">Current Trainer</label>
+          <input disabled class="grey-text darken-4 center" type="text" name="current_trainer" value="<%= pokemon.trainerName %>">
+        </div>
+
     </div>
 
-    <label class="orange-text lighten-1" for="cp">Update CP:</label>
-    <input class="orange-text lighten-1 center" type="text" name="cp" value="<%= pokemon.cp %>">
+      <label class="orange-text lighten-1" for="cp">Update CP:</label>
+      <input class="orange-text lighten-1 center" type="text" name="cp" value="<%= pokemon.cp %>">
 
-    <label class="orange-text lighten-1" for="trainer_id">Choose New Trainer: </label>
-    <select class="orange-text lighten-1" name="trainer_id">
-      <% for (let i = 0; i < trainers.length; i++) { %>
-        <option value="<%= trainers[i].id %>"><%=trainers[i].name %></option>
-      <% } %>
-    </select>
+      <label class="orange-text lighten-1" for="trainer_id">Choose New Trainer: </label>
+      <select class="orange-text lighten-1" name="trainer_id">
+        <% for (let i = 0; i < trainers.length; i++) { %>
+          <option value="<%= trainers[i].id %>"><%=trainers[i].name %></option>
+        <% } %>
+      </select>
 
-    <label for=""></label>
+      <label for=""></label>
 
-    <input class="btn orange lighten-1" type="submit" name="" value="Submit Changes">
+      <input class="btn orange lighten-1" type="submit" name="" value="Submit Changes">
+
+
   </form>
 
 </div>

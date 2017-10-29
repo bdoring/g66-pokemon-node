@@ -1,13 +1,17 @@
 <%- contentFor('body') %>
 
-<a class="btn orange lighten-1" href="/trainers"> GO BACK</a>
+<a class="btn" href="/trainers"> GO BACK</a>
 
-<h1 class="orange-text lighten-1 center"><%= trainer.name %></h1>
+<div class="trainer-intro z-depth-5">
+  <h2 class="orange-text lighten-1 center"><p><img src="<%= trainer.image_url %>" alt=""></p><b><%= trainer.name %></b></h2>
+</div>
 
-<div class="my-pokemon-list">
+
+<div class="my-pokemon-list-trainer">
   <% for (let i = 0; i < pokemon.length; i++) { %>
-    <div class="pokemon">
-      <h3 class="orange-text lighten-1"><%= pokemon[i].name %></h3>
+    <div class="pokemon z-depth-1">
+      <h4 class="orange-text lighten-1"><%= pokemon[i].name %></h4>
+      <p><img src="<%= pokemon[i].display_image_url %>" alt=""></p>
     </div>
   <% } %>
 </div>
