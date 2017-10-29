@@ -1,20 +1,25 @@
 <%- contentFor('body') %>
+<div class="center">
+  <a class="btn" href="/gym/removeGym"> RESET GYM</a>
+</div>
 
-<a class="btn orange lighten-1" href="/gym/removeGym"> RESET GYM</a>
 
 <h3 class="red-text center"><%= message %></h3>
 
-<div class="center orange-text lighten-1">
+<div class="center orange-text lighten-1 gym-form">
   <form class="" action="" method="post">
 
   <% if (battlingPokemon[0]) { %>
-    <h1 id="player1" value="<%= battlingPokemon[0].cp %>"><%= battlingPokemon[0].name %></h1>
-    <h1>VS</h1>
+    <h2 id="player1" value="<%= battlingPokemon[0].cp %>"><%= battlingPokemon[0].name %></h2>
+    <h2><img src="<%= battlingPokemon[0].battle_image_url %>" alt=""> VS
+    <!-- </h1> -->
     <% if (battlingPokemon[1]) { %>
-      <h1 id="player2" value="<%= battlingPokemon[1].cp %>"><%= battlingPokemon[1].name %></h1>
+      <img src="<%= battlingPokemon[1].battle_image_url %>" alt=""></h2>
+      <h2 id="player2" value="<%= battlingPokemon[1].cp %>"><%= battlingPokemon[1].name %></h2>
       <a id="battle" class="btn" href="/gym/battle">BATTLE!</a>
     <% } else { %>
-      <label for="player2">Choose Player 2: </label>
+    ???</h2>
+      <label class="player teal-text" for="player2">Choose Pokemon 2: </label>
       <select class="" name="player2">
         <% for (let i = 0; i < pokemon.length; i++) { %>
           <option value="<%= pokemon[i].id %>"><%= pokemon[i].name %></option>
@@ -23,8 +28,8 @@
       <input formaction="/gym/addToGym" type="submit" class="btn orange lighten-1" value="ADD TO GYM">
     <% } %>
   <% } else { %>
-      <label for="player1">Choose Player 1: </label>
-      <select class="" name="player1">
+      <label class="player teal-text" for="player1"><b>Choose Pokemon 1:</b></label>
+      <select class="player" name="player1">
         <% for (let i = 0; i < pokemon.length; i++) { %>
           <option value="<%= pokemon[i].id %>"><%= pokemon[i].name %></option>
         <% } %>
@@ -32,8 +37,8 @@
 
       <label for=""></label>
 
-      <label for="player2">Choose Player 2: </label>
-      <select class="" name="player2">
+      <label class="player teal-text" for="player2"><b>Choose Pokemon 2:</b></label>
+      <select class="player" name="player2">
         <% for (let i = 0; i < pokemon.length; i++) { %>
           <option value="<%= pokemon[i].id %>"><%= pokemon[i].name %></option>
         <% } %>

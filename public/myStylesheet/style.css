@@ -3,19 +3,24 @@
   box-sizing: border-box;
 }
 
+
 td {
   text-align: center;
 }
 
-label {
-  color: white;
+/*label {
+  : white;
+}*/
+
+img {
+  max-height: 145px;
 }
 
 #add-new-pokemon {
   height: 150px;
   border-radius: 5px;
   margin: 10px;
-  background-color: rgba(224, 224, 224, 0.3);
+  background-: rgba(224, 224, 224, 0.3);
 }
 
 .small-btn {
@@ -24,8 +29,8 @@ label {
   height: 30px;
 }
 
-.my-pokemon-list, .trainers-list {
-  height: 550px;
+.my-pokemon-list {
+  height: 700px;
   margin: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -33,22 +38,47 @@ label {
   justify-content: center;
 }
 
+.gym-form {
+  padding: 20px;
+  width: 800px;
+  margin: 10px auto;
+  height: 500px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: rgba(252, 234, 174, 0.9);
+}
+
+.player{
+  font-size: 30px;
+  margin: 40px;
+
+}
+
 .my-pokemon {
+  border: 1px solid grey;
   flex: 0 0 auto;
   margin: 5px;
-  height: 220px;
+  height: 260px;
   width: 250px;
   padding: 5px;
   border-radius: 5px;
-  background-color: rgba(224, 224, 224, 0.3);
+  background-color: rgba(252, 234, 174, 0.9);
+}
+
+.display_image_url {
+  height: 60px;
 }
 
 .pokemon-name {
   font-size: 20px;
 }
 
-.uppercase {
-  text-transform: uppercase;
+.pokemon-profile-button {
+  margin: 10px;
+}
+
+.pokemon-desc {
+  color: #c77800;
 }
 
 .edit-form {
@@ -79,13 +109,73 @@ label {
   margin: 0 10px;
 }
 
-.trainers, .pokemon {
+.trainers-list {
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+}
+
+.trainers {
+  flex: 0 1 auto;
+  margin: 0 auto;
+  text-align: center;
+  margin: 5px;
+  height: 170px;
+  width: 300px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(252, 234, 174, 0.9);
+  border: 1px solid grey;
+}
+
+.trainer-intro {
+  margin: 10px auto;
+  width: 1550px;
+  background-color: rgba(252, 234, 174, 0.9);
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.my-pokemon-list-trainer {
+  height: 520px;
+  margin: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  justify-content: center;
+}
+
+.pokemon-intro {
+  padding-left: 10px;
+  width: 300px;
+  height: 350px;
+  margin: 10px auto;
+  background-color: rgba(252, 234, 174, 0.9);
+  border: 1px solid grey;
+  border-radius: 5px;
+  color: #c77800;
+}
+
+.pokemon-info {
+  margin: 0 auto;
+  width: 300px;
+}
+
+.pokemon {
+  border: 1px solid grey;
   flex: 0 0 auto;
   text-align: center;
   margin: 5px;
-  height: 90px;
+  height: 250px;
   width: 250px;
   padding: 5px;
   border-radius: 5px;
-  background-color: rgba(224, 224, 224, 0.3);
+  background-color: rgba(252, 234, 174, 0.9);
+}
+
+.trainer_image_url {
+  height: 80px;
 }
