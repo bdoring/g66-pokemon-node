@@ -43,9 +43,9 @@ router.post('/', function(req, res, next) {
       in_gym: false
     }
     knex('pokemon')
-      .insert(newPokemon)
-      .then(() => {
-        res.redirect('/pokemon');
+      .insert(newPokemon, '*')
+      .then((pokemonAdded) => {
+        res.redirect(`/pokemon/${pokemonAdded[0].id}`);
       })
       .catch((err) => {
         console.log(err);

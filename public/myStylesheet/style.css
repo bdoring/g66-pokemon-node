@@ -8,9 +8,9 @@ td {
   text-align: center;
 }
 
-label {
+/*label {
   : white;
-}
+}*/
 
 img {
   max-height: 145px;
@@ -119,7 +119,7 @@ img {
 }
 
 .trainers {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   margin: 0 auto;
   text-align: center;
   margin: 5px;

@@ -19,7 +19,7 @@
       <a id="battle" class="btn" href="/gym/battle">BATTLE!</a>
     <% } else { %>
     ???</h2>
-      <label class="player teal-text" for="player2">Choose Player 2: </label>
+      <label class="player teal-text" for="player2">Choose Pokemon 2: </label>
       <select class="" name="player2">
         <% for (let i = 0; i < pokemon.length; i++) { %>
           <option value="<%= pokemon[i].id %>"><%= pokemon[i].name %></option>
