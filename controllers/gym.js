@@ -8,7 +8,18 @@ router.get('/', function(req, res, next) {
   knex('pokemon')
     .orderBy('updated_at', 'ASC')
     .then((pokemonList) => {
-      let inGymPokemon = pokemonList.filter(pokemon => pokemon.in_gym);
+      let pokemon1 = 0;
+      let pokemon2 = 0;
+      if (req.cookies.p1) {
+        pokemon1 = req.cookies.p1;
+      }
+      if (req.cookies.p2) {
+        pokemon2 = req.cookies.p2;
+      }
+
+      console.log(pokemon1)
+      let inGymPokemon = pokemonList.filter(pokemon => ((pokemon.id == pokemon1) || (pokemon.id == pokemon2)));
+
       let messageToThePage = "";
       if (req.cookies.message) {
         messageToThePage = req.cookies.message;
@@ -48,8 +59,10 @@ router.post('/addToGym', function(req, res) {
   if ((pokemonToBeAdded.player1 !== pokemonToBeAdded.player2) && ((pokemonToBeAdded.player2 != p1) && (pokemonToBeAdded.player2 != p2))){
 
       knex('pokemon')
-        .update({ in_gym: true }, '*')
-        .update({ updated_at: knex.fn.now()}, '*')
+        .update({
+          in_gym: true,
+          updated_at: knex.fn.now()
+        }, '*')
         .where('pokemon.id', pokemonToBeAdded['player1'])
         .orWhere('pokemon.id', pokemonToBeAdded['player2'])
         .then((updatedPokemon) => {
