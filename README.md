@@ -1,25 +1,10 @@
 ![](https://github.com/gSchool/pokemon-node/blob/master/public/images/pokemon-logo.png)
 
-## WELCOME to the Q2 Assessment!
-
-Move deliberately and methodically through the stories provided below.
-
-__Stay calm and code on!__
-
-## Assessment Overview
+## Overview
 
 **Pokemón Node** is an app where a user can manage trainers and their corresponding
 Pokemón to battle in a gym. Users should be able to CREATE, READ, UPDATE, and DELETE Pokemón,
 as well as assign Pokemón to the gym (details below).
-
-Your app should look at _least_ as good as the wireframes, preferably better.
-
-If you want to use session variables instead of cookies, that is fine.
-
-Your app should use `pg` and `knex`, and your schema should be built
-using `migrations`.
-
-Your app should be deployed to Heroku.
 
 ## INSTRUCTIONS:
 
@@ -31,24 +16,6 @@ nodemon
 ```
 
 * You'll need to create a database called `pokemon-node`
-* Write a migration for the pokemon database that creates two tables:
-  * pokemon
-  * trainers.
-
-### Use the following information to build your migrations (schema):
-
-__trainers__
-
-* id (auto increment)
-* name (string)
-
-__pokemon__
-
-* id (auto increment)
-* name (string)
-* trainer_id (integer)
-* cp (integer)  __=>__ cp stands for combat power
-* in_gym (boolean)
 
 __After you run your migrations, seed the database by running:__
 
@@ -60,9 +27,8 @@ knex seed:run
 * Follow the stories below.
 
 
-# Use the following Gherkin (User) stories to guide your development:
+# Use the following Gherkin (User) stories to guide you through the app:
 
-__You should git add, commit, push, and deploy to Heroku after each story is completed__
 
 ### Pokemón and Pokemón CRUD
 
@@ -150,25 +116,6 @@ And I click the 'DELETE' link for a Pokemón
 Then I am redirected to the Pokemón home page
 And that Pokemón is no longer listed
 ```
-
-
-_OVERVIEW of STORY # 10_
-
-* You will be using cookies to keep track of which Pokemón are in the 'gym'.
-* You will use cookies to set the values `p1` and `p2` to be the `id `of the two
-respective Pokemón in the gym.
-* The gym should only hold two Pokemón.
-* When you visit the Pokemón home page, if either the `p1` or `p2` cookies is not set,
-then you can click 'assign to gym' next to a Pokemón and they will be
-'assigned to the gym' (i.e. their id will be assigned to either `p1` or `p2`)
-* and their 'in_gym' status in the database will be updated to `true`
-
-__EXAMPLE:__ If you have a Raichu with an id of 22 in the database and you click
-'assign to gym' then you would set a cookie p1 with a value of 22.
-
-
-__NOTE:__ Your database should _always_ be updated to have the current `in_gym`
-status of _all_ Pokemón.
 
 __#10__
 
@@ -310,10 +257,6 @@ And I click the 'battle' button
 Then the Pokemón with the higher Combat Power 'wins' the fight
 And the winning Pokemón's name is displayed on the page next to the word 'WINNER!'
 ```
-__HINT:__ Would it be simpler if all the data you need is passed in to the view
-when the page loads (before the user clicks the button?)? HOWEVER, a Pokemón's
-Combat Power should NOT be stored in the cookie. You will need to get that info
-from the database.
 
 __#10__
 
@@ -339,57 +282,3 @@ __#2__
 image url.
 
 * Display the image on both the gym and the Pokemón index page.
-
-
-## WIREFRAMES
-
-You can use these mockups/wireframes as a reference. Your design does not have to
-exactly match, but it should look as good or preferably BETTER than the mockups:
-
-## TRAINERS INDEX
-
-![Trainers - Index](https://github.com/gSchool/pokemon-node/blob/master/mockups/trainers-index.png)
-
-## TRAINERS SHOW PAGE /trainers/:id
-
-![Trainers - Show](https://github.com/gSchool/pokemon-node/blob/master/mockups/trainers-show.png)
-
-## POKEMÓN INDEX
-
-![Pokemon - Index](https://github.com/gSchool/pokemon-node/blob/master/mockups/pokemon-index.png)
-
-## GYM
-
-![Gym](https://github.com/gSchool/pokemon-node/blob/master/mockups/gym.png)
-
-
-## How to Submit Your Assessment
-
-1. Add your Heroku URL to the TOP of this readme
-2. Submit a pull request
-
-## RESOURCES FROM PAST ASSIGNMENTS
-( AND DON'T FORGET ABOUT THE DOCS! )
-
-__Deployment__
-* https://github.com/gSchool/intro-to-deploying-express-pg-apps-to-heroku
-( GO TO GITHUB BRANCH g29 to see the way we've been doing it )
-
-__Knex and Deployment__
-* https://github.com/gSchool/knex-migrations-and-deployment
-
-__CRUD with KNEX__
-* https://github.com/gSchool/pirates-crud-with-pg-knex-raw
-
-__COOKIES__
-* https://github.com/gSchool/auth_sandbox  ( AUTH SANDBOX )
-* https://learn.galvanize.com/redirects/articles/3610  ( VIEW VIDEO #3 ON COOKIES )
-* Nmuta's YouTube channel cookies live coding videos ( 9 videos ) : https://www.youtube.com/channel/UCxM6--J9pxeS3geqe1MVxsg
-
-https://www.youtube.com/watch?v=h3vlPfc0Als&t=9s
-
-https://www.youtube.com/watch?v=iPDUW73HKV0
-
-https://www.youtube.com/watch?v=tGRKEkeajQg
-
-... etc... See COOKIES BIKE DEPOT series for all 9 videos
