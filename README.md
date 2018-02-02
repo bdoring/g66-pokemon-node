@@ -1,5 +1,3 @@
-![](https://github.com/gSchool/pokemon-node/blob/master/public/images/pokemon-logo.png)
-
 ## Overview
 
 **Pokemón Node** is an app where a user can manage trainers and their corresponding
