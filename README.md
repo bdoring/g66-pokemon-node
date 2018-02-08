@@ -1,7 +1,7 @@
 ## Overview
 
 **Pokemón Node** is an app where a user can manage trainers and their corresponding
-Pokemón to battle in a gym. Users should be able to CREATE, READ, UPDATE, and DELETE Pokemón,
+Pokemón to battle in a gym. Users are be able to CREATE, READ, UPDATE, and DELETE Pokemón,
 as well as assign Pokemón to the gym (details below).
 
 ## INSTRUCTIONS:
