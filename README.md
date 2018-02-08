@@ -4,6 +4,8 @@
 Pokemón to battle in a gym. Users are be able to CREATE, READ, UPDATE, and DELETE Pokemón,
 as well as assign Pokemón to the gym (details below).
 
+https://pokemon-nodejs.herokuapp.com
+
 ## INSTRUCTIONS:
 
 ```
